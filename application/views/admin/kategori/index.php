@@ -31,13 +31,14 @@
                                         <tr>
                                             <td colspan="3" class="text-center">Data Kosong</td>
                                         </tr>
-                                    <?php } else foreach ($kategori as $item) : ?>
+                                    <?php } else $no = 0;
+                                    foreach ($kategori as $item) : $no++ ?>
                                         <tr>
-                                            <td><?= $item->idkat; ?></td>
+                                            <td><?= $no ?></td>
                                             <td><?= $item->namakat ?></td>
                                             <td>
-                                                <a href="<?= site_url('kategori/getid/' . $item->idkat);  ?>" class="btn btn-warning">Edit</a>
-                                                <a href="<?= site_url('kategori/getid/' . $item->idkat);  ?>" class="btn btn-danger">Hapus</a>
+                                                <a href="<?= site_url('kategori/edit/' . $item->idkat);  ?>" class="btn btn-warning">Edit</a>
+                                                <a href="<?= site_url('kategori/delete/' . $item->idkat);  ?>" class="btn btn-danger">Hapus</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

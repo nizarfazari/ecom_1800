@@ -17,4 +17,43 @@ class Kategori extends CI_Controller
     {
         $this->template->load('layout_admin', 'admin/kategori/form_add');
     }
+
+    public function save()
+    {
+        $namaKategori = $this->input->post('namaKategori');
+        $data = ['namakat' => $namaKategori];
+        $this->M_Crud->insert('tbl_kategori', $data);
+        redirect('kategori');
+    }
+
+    public function edit($id)
+    {
+        $data = ['idkat' => $id];
+        $data['kategori'] = $this->M_Crud->edit('tbl_kategori', $data)->row_object();
+        $this->template->load('layout_admin', 'admin/kategori/form_edit', $data);
+    }
+
+    public function update()
+    {
+        $id = $this->input->post('id');
+        $namaKategori = $this->input->post('namaKategori');
+        $data = ['namakat' => $namaKategori];
+        $this->M_Crud->update('tbl_kategori', $data, 'idkat', $id);
+        if ($this->db->affected_rows()) {
+            redirect('kategori');
+        } else {
+            echo "data gagal di update";
+        }
+        redirect('kategori');
+    }
+
+    public function delete($id)
+    {
+        $this->M_Crud->hapus('tbl_kategori', 'idkat', $id);
+        if ($this->db->affected_rows()) {
+            redirect('kategori');
+        } else {
+            echo "data gagal hapus";
+        }
+    }
 }

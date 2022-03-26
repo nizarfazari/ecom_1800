@@ -14,16 +14,17 @@
             <h2 class="section-title">Forms</h2>
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-6">
-                    <form action="<?= site_url('kategori/save') ?>" method="POST">
+                    <form action="<?= site_url('kategori/update') ?>" method="POST">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Form Tambah Kategori</h4>
+                                <h4>Form Edit Kategori</h4>
                             </div>
                             <div class="card-body">
+                                <input type="hidden" name="id" value="<?= $kategori->idkat ?>">
                                 <div class="form-group row">
                                     <label class="col-sm-3 form-label">Nama Kategori</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="namaKategori" placeholder="Nama Kategori">
+                                        <input type="text" class="form-control" name="namaKategori" placeholder="Nama Kategori" value="<?= $kategori->namakat ?>">
                                     </div>
                                 </div>
                             </div>
