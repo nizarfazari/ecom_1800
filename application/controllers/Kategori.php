@@ -43,8 +43,8 @@ class Kategori extends CI_Controller
             redirect('kategori');
         } else {
             echo "data gagal di update";
+            redirect('kategori');
         }
-        redirect('kategori');
     }
 
     public function delete($id)

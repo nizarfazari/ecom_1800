@@ -252,11 +252,22 @@
             <a href="index.html">St</a>
           </div>
           <ul class="sidebar-menu">
-            <li class="nav-item dropdown ">
+            <li>
               <a href="<?= site_url('adminpanel/dashboard')  ?>" class="nav-link "><i class="fas fa-fire"></i><span>Dashboard</span></a>
             </li>
-            <li class="nav-item dropdown ">
+            <li class="nav-item">
               <a href="<?= site_url('kategori')  ?>" class="nav-link"><i class="fas fa-th"></i><span>Kategori</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-truck"></i><span>Ongkir</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="<?= site_url('kota')  ?>">Kota</a></li>
+                <li class="active"><a class="nav-link" href="index.html">Kurir</a></li>
+                <li class="active"><a class="nav-link" href="index.html">Ongkos</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="<?= site_url('kategori')  ?>" class="nav-link"><i class="fas fa-users"></i><span>Member</span></a>
             </li>
           </ul>
         </aside>
