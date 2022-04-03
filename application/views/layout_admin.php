@@ -259,11 +259,11 @@
               <a href="<?= site_url('kategori')  ?>" class="nav-link"><i class="fas fa-th"></i><span>Kategori</span></a>
             </li>
             <li class="nav-item dropdown">
-              <a href="#" class="nav-link has-dropdown"><i class="fas fa-truck"></i><span>Ongkir</span></a>
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-truck"></i><span>Jasa Perjalanan</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="<?= site_url('kota')  ?>">Kota</a></li>
-                <li class="active"><a class="nav-link" href="index.html">Kurir</a></li>
-                <li class="active"><a class="nav-link" href="index.html">Ongkos</a></li>
+                <li class="active"><a class="nav-link" href="<?= site_url('kurir')  ?>">Kurir</a></li>
+                <li class="active"><a class="nav-link" href="<?= site_url('ongkir')  ?>">Ongkir</a></li>
               </ul>
             </li>
             <li class="nav-item">

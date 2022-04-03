@@ -10,12 +10,12 @@ class Kota extends CI_Controller
     public function index()
     {
         $data['kota'] = $this->M_Crud->get_all_data('tbl_kota')->result();
-        $this->template->load('layout_admin', 'admin/ongkir/kota/index', $data);
+        $this->template->load('layout_admin', 'admin/jasa_perjalanan/kota/index', $data);
     }
 
     public function add()
     {
-        $this->template->load('layout_admin', 'admin/ongkir/kota/form_add');
+        $this->template->load('layout_admin', 'admin/jasa_perjalanan/kota/form_add');
     }
 
     public function save()
@@ -30,7 +30,7 @@ class Kota extends CI_Controller
     {
         $data = ['idKota' => $id];
         $data['kota'] = $this->M_Crud->edit('tbl_kota', $data)->row_object();
-        $this->template->load('layout_admin', 'admin/ongkir/kota/form_edit', $data);
+        $this->template->load('layout_admin', 'admin/jasa_perjalanan/kota/form_edit', $data);
     }
 
     public function update()
