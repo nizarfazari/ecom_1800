@@ -5,6 +5,7 @@ class Kategori extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_Crud');
+        $this->load->library('form_validation');
     }
 
     public function index()
@@ -20,10 +21,19 @@ class Kategori extends CI_Controller
 
     public function save()
     {
-        $namaKategori = $this->input->post('namaKategori');
-        $data = ['namakat' => $namaKategori];
-        $this->M_Crud->insert('tbl_kategori', $data);
-        redirect('kategori');
+        $this->form_validation->set_rules('namaKategori', 'Nama Kategori', 'required|min_length[5]');
+
+        $this->form_validation->set_message('required', '%s masih kosong,silahkan isi');
+        $this->form_validation->set_message('min_length', '{field} minimal 5 karakter');
+        $this->form_validation->set_error_delimiters('<span class="help-block text-danger">', '</span>');
+        if ($this->form_validation->run() == FALSE) {
+            $this->template->load('layout_admin', 'admin/kategori/form_add');
+        } else {
+            $namaKategori = $this->input->post('namaKategori');
+            $data = ['namakat' => $namaKategori];
+            $this->M_Crud->insert('tbl_kategori', $data);
+            redirect('kategori');
+        }
     }
 
     public function edit($id)

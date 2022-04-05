@@ -20,10 +20,19 @@ class Kota extends CI_Controller
 
     public function save()
     {
-        $namaKota = $this->input->post('namaKota');
-        $data = ['namaKota' => $namaKota];
-        $this->M_Crud->insert('tbl_kota', $data);
-        redirect('kota');
+        $this->form_validation->set_rules('namaKota', 'Nama Kategori', 'required|min_length[5]');
+
+        $this->form_validation->set_message('required', '%s masih kosong,silahkan isi');
+        $this->form_validation->set_message('min_length', '{field} minimal 5 karakter');
+        $this->form_validation->set_error_delimiters('<span class="help-block text-danger">', '</span>');
+        if ($this->form_validation->run() == FALSE) {
+            $this->template->load('layout_admin', 'admin/jasa_perjalanan/kota/form_add');
+        } else {
+            $namaKota = $this->input->post('namaKota');
+            $data = ['namaKota' => $namaKota];
+            $this->M_Crud->insert('tbl_kota', $data);
+            redirect('kota');
+        }
     }
 
     public function edit($id)

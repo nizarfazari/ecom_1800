@@ -37,10 +37,8 @@
                 <form method="POST" action="<?= site_url('login/aksi_login') ?>" class="needs-validation" novalidate="">
                   <div class="form-group">
                     <label for="username">username</label>
-                    <input id="username" type="text" class="form-control" name="username" tabindex="1" name="username" required autofocus>
-                    <div class="invalid-feedback">
-                      Please fill in your email
-                    </div>
+                    <input id="username" type="text" class="form-control <?= form_error('username') ? 'is-invalid' :  '' ?>" name="username" tabindex="1" name="username" required autofocus>
+                    <?= form_error('username') ?>
                   </div>
 
                   <div class="form-group">
@@ -52,10 +50,8 @@
                         </a>
                       </div>
                     </div>
-                    <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
-                    <div class="invalid-feedback">
-                      please fill in your password
-                    </div>
+                    <input id="password" type="password" class="form-control <?= form_error('password') ? 'is-invalid' :  '' ?>" name="password" tabindex="2" required>
+                    <?= form_error('password') ?>
                   </div>
 
                   <div class="form-group">

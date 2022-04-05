@@ -42,7 +42,7 @@ class ongkir extends CI_Controller
         $id = ['idBiayaKirim' => $id];
         $data['kota'] = $this->M_Crud->get_all_data('tbl_kota')->result();
         $data['kurir'] = $this->M_Crud->get_all_data('tbl_kurir')->result();
-        $data['ongkir'] = $this->M_Crud->join_table('tbl_biaya_kirim bk', 'tbl_kurir k', 'bk.idKurir=k.idKurir', 'tbl_kota a', 'bk.idKotaAsal = a.idKota', 'tbl_kota b', 'bk.idKotaTujuan = b.idKota')->row_object();
+        $data['ongkir'] = $this->M_Crud->edit_join('tbl_biaya_kirim bk', 'tbl_kurir k', 'bk.idKurir=k.idKurir', 'tbl_kota a', 'bk.idKotaAsal = a.idKota', 'tbl_kota b', 'bk.idKotaTujuan = b.idKota', $id)->row_object();
         $this->template->load('layout_admin', 'admin/jasa_perjalanan/ongkir/form_edit', $data);
     }
 

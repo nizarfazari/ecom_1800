@@ -23,7 +23,8 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3 form-label">Nama Kurir</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="namaKurir" placeholder="Nama kurir">
+                                        <input type="text" class="form-control  <?= form_error('namaKurir') ? 'is-invalid' :  '' ?>" name="namaKurir" placeholder="Nama kurir">
+                                        <?= form_error('namaKurir') ?>
                                     </div>
                                 </div>
                             </div>

@@ -22,7 +22,8 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3 form-label">Nama Kategori</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="namaKategori" placeholder="Nama Kategori">
+                                        <input type="text" class="form-control <?= form_error('namaKategori') ? 'is-invalid' :  '' ?>" name="namaKategori" placeholder="Nama Kategori">
+                                        <?= form_error('namaKategori') ?>
                                     </div>
                                 </div>
                             </div>

@@ -20,10 +20,19 @@ class Kurir extends CI_Controller
 
     public function save()
     {
-        $namaKurir = $this->input->post('namaKurir');
-        $data = ['namaKurir' => $namaKurir];
-        $this->M_Crud->insert('tbl_kurir', $data);
-        redirect('kurir');
+        $this->form_validation->set_rules('namaKurir', 'Nama Kategori', 'required|min_length[5]');
+
+        $this->form_validation->set_message('required', '%s masih kosong,silahkan isi');
+        $this->form_validation->set_message('min_length', '{field} minimal 5 karakter');
+        $this->form_validation->set_error_delimiters('<span class="help-block text-danger">', '</span>');
+        if ($this->form_validation->run() == FALSE) {
+            $this->template->load('layout_admin', 'admin/jasa_perjalanan/kurir/form_add');
+        } else {
+            $namaKurir = $this->input->post('namaKurir');
+            $data = ['namaKurir' => $namaKurir];
+            $this->M_Crud->insert('tbl_kurir', $data);
+            redirect('kurir');
+        }
     }
 
     public function edit($id)
