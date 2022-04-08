@@ -267,7 +267,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="<?= site_url('kategori')  ?>" class="nav-link"><i class="fas fa-users"></i><span>Member</span></a>
+              <a href="<?= site_url('member')  ?>" class="nav-link"><i class="fas fa-users"></i><span>Member</span></a>
             </li>
           </ul>
         </aside>
