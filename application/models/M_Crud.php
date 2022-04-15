@@ -6,6 +6,16 @@ class M_Crud extends CI_Model
         return $this->db->get($table);
     }
 
+    public function get_data_by_username($table, $user)
+    {
+        return $this->db->get_where($table, $user);
+    }
+
+    public function get_data_by_id($table, $id)
+    {
+        return $this->db->get_where($table, $id);
+    }
+
     public function insert($table, $data)
     {
         $this->db->insert($table, $data);

@@ -23,8 +23,8 @@ class Login extends CI_Controller
         } else {
             $u = $this->input->post('username');
             $p = $this->input->post('password');
-
-            $cek = $this->M_Login->cek_login($u, $p)->num_rows();
+            $data = ['userName' => $u, 'password' => $p];
+            $cek = $this->M_Login->cek_login('tbl_admin', $data)->num_rows();
             if ($cek == 1) {
                 $data_session = [
                     'userName' => $u,
