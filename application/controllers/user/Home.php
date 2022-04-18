@@ -13,7 +13,6 @@ class Home extends CI_Controller
 
     public function index()
     {
-
         $this->template->load('layout_member', 'member/home');
     }
 
@@ -55,7 +54,8 @@ class Home extends CI_Controller
 
     public function register()
     {
-        $this->template->load('layout_member', 'member/register');
+        $data['kota'] = $this->M_Crud->get_all_data('tbl_kota')->result();
+        $this->template->load('layout_member', 'member/register', $data);
     }
 
     public function act_register()
@@ -79,17 +79,19 @@ class Home extends CI_Controller
             $username = $this->input->post('username');
             $password = $this->input->post('password');
             $alamat = $this->input->post('alamat');
+            $idKota = $this->input->post('idKota');
             $tlpn = $this->input->post('no_telpon');
             $data = [
-                'namaKategori' => $nama,
+                'namaKonsumen' => $nama,
                 'email' =>  $email,
                 'username' => $username,
                 'password' => $password,
                 'alamat' => $alamat,
+                'idKota' => $idKota,
                 'tlpn' => $tlpn
             ];
             $this->M_Crud->insert('tbl_member', $data);
-            redirect('kategori');
+            redirect('user/home/login');
         }
     }
 
@@ -154,12 +156,5 @@ class Home extends CI_Controller
                 }
             }
         }
-    }
-
-    public function detail_toko($id)
-    {
-        $find_id = ["id => $id"];
-        $data['toko'] = $this->M_Crud->get_data_by_id('tbl_toko', $find_id)->row_object();
-        $this->template->load('layout_member', 'member/toko/detail_toko', $data);
     }
 }

@@ -8,7 +8,7 @@
                         <h4>Register</h4>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="<?php site_url('user/home/act_register') ?>">
+                        <form method="POST" action="<?= site_url('user/home/act_register') ?>">
                             <div class="row">
                                 <div class="form-group col-6">
                                     <label for="first_name">Nama Lengkap</label>
@@ -39,7 +39,7 @@
                             </div>
 
                             <div class="form-divider">
-                                Your Home
+                                Alamat Rumah
                             </div>
                             <div class="row">
                                 <div class="form-group col-12">
@@ -50,10 +50,11 @@
                                 </div>
                                 <div class="form-group col-6">
                                     <label>Kota</label>
-                                    <select class="form-control selectric" name="kota">
-                                        <option value="2">Magelang</option>
-                                        <option value="3">Jogja</option>
-                                        <option value="5">Klaten</option>
+                                    <?php  ?>
+                                    <select class="form-control selectric" name="idKota">
+                                        <?php foreach ($kota as $item) : ?>
+                                            <option value="<?= $item->idKota ?>"><?= $item->namaKota ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="form-group col-6">
