@@ -8,7 +8,7 @@
                         <h4>Register</h4>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="<?= site_url('user/home/act_register') ?>">
+                        <form method="POST" action="<?= site_url('user/auth/act_register') ?>">
                             <div class="row">
                                 <div class="form-group col-6">
                                     <label for="first_name">Nama Lengkap</label>

@@ -9,7 +9,7 @@
                     </div>
 
                     <div class="card-body">
-                        <form method="POST" action="<?= site_url('user/home/act_login') ?>" class="needs-validation" novalidate="">
+                        <form method="POST" action="<?= site_url('user/auth/act_login') ?>" class="needs-validation" novalidate="">
                             <div class="form-group">
                                 <label for="">Username</label>
                                 <input type="text" name="username" id="" class="form-control">

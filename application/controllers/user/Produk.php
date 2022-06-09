@@ -12,7 +12,7 @@
         }
         public function index($id)
         {
-            $find_id = ["id => $id"];
+            $find_id = ["idToko" => $id];
             $data['toko'] = $this->M_Crud->get_data_by_id('tbl_toko', $find_id)->row_object();
             $data['produk'] = $this->M_Crud->get_all_data('tbl_produk')->result();
             $this->template->load('layout_member', 'member/toko/produk/index', $data);

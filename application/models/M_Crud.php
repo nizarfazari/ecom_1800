@@ -6,6 +6,12 @@ class M_Crud extends CI_Model
         return $this->db->get($table);
     }
 
+    public function get_limit_data($table)
+    {
+        $this->db->order_by('idProduk', 'DESC');
+        $this->db->limit(4);
+        return $this->db->get($table);
+    }
     public function get_data_by_username($table, $user)
     {
         return $this->db->get_where($table, $user);
@@ -50,5 +56,15 @@ class M_Crud extends CI_Model
         $this->db->select('*,namaKurir,a.namaKota AS asal,b.namaKota AS tujuan,biaya');
         $this->db->join($tbljoin, $q)->join($tbljoin2, $q2,)->join($tbljoin3, $q3);
         return $this->db->get_where($table, $id);
+    }
+
+    public function find($id)
+    {
+        $result = $this->db->where('idProduk', $id)->limit(1)->get('tbl_produk');
+        if ($result->num_rows() > 0) {
+            return $result->row();
+        } else {
+            return array();
+        }
     }
 }
