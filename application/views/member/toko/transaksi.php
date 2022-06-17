@@ -2,7 +2,7 @@
     <section class="section">
         <div class="section-header">
             <a href="" class="btn btn-icon"><i class="fas fa-arrow"></i></a>
-            <h1>Menu Utama Dashboard Toko "<?= $toko->namaToko ?>"</h1>
+            <h1>Menu Utama Dashboard Member</h1>
         </div>
     </section>
 
@@ -11,27 +11,21 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Menu Toko</h4>
+                        <h4>Menu Member</h4>
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-pills flex-column">
                             <li class="nav-item"><a href="<?= site_url('user/home/') ?>" class="nav-link">Beranda</a></li>
-                            <li class="nav-item"><a href="" class="nav-link">Produk</a></li>
-                            <li class="nav-item"><a href="" class="nav-link">Pesanan</a></li>
-                            <li class="nav-item"><a href="" class="nav-link">Laporan</a></li>
+                            <li class="nav-item"><a href="<?= site_url('user/home/transaksi') ?>" class="nav-link">Transaksi</a></li>
+                            <li class="nav-item"><a href="<?= site_url('user/home/toko') ?>" class="nav-link">Toko</a></li>
+                            <li class="nav-item"><a href="" class="nav-link">Ubah Profil</a></li>
+                            <li class="nav-item"><a href="" class="nav-link">Logout</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="row">
-                    <div class="col-12 ">
-                        <div class="card">
-                            <div class="card-body">
-                                <a href="<?= site_url('user/produk/create/' . $toko->idToko) ?>" class="btn btn-primary ">Silahkan Membuat Produk</a>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
@@ -42,25 +36,25 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">Nama Produk</th>
+                                            <th scope="col">Jumlah</th>
                                             <th scope="col">Harga</th>
-                                            <th scope="col">Stok</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col">Tgl Order</th>
+                                            <th scope="col">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php if (empty($produk)) { ?>
+                                        <?php if (empty($transaksi)) { ?>
                                             <tr>
-                                                <td colspan="4" class="text-center">Data Kosong</td>
+                                                <td colspan="5" class="text-center">Data Kosong</td>
                                             </tr>
                                         <?php } else
-                                            foreach ($produk as $item) : ?>
+                                            foreach ($transaksi as $item) : ?>
                                             <tr>
                                                 <td><?= $item->namaProduk ?></td>
+                                                <td><?= $item->jumlah ?></td>
                                                 <td><?= $item->harga ?></td>
-                                                <td><?= $item->stok ?></td>
-                                                <td>
-                                                    <a href="<?= site_url();  ?>" class="btn btn-primary">Details</a>
-                                                </td>
+                                                <td><?= $item->tglOrder ?></td>
+                                                <td><?= $item->statusOrder ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>

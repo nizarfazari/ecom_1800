@@ -7,6 +7,10 @@ class Login extends CI_Controller
         parent::__construct();
         $this->load->model('M_Login');
         $this->load->library('form_validation');
+        if (empty($this->session->userdata('userName'))) {
+            redirect('adminpanel');
+        }
+        $this->template->load('layout_admin', 'admin/dashboard');
     }
 
     public function aksi_login()

@@ -58,7 +58,7 @@
                 </ul>
                 <?php echo $this->session->userdata('id') ?>
                 <?php if (!empty($this->session->userdata('id'))) { ?>
-                    <a href="<?= site_url('user/home') ?>" class="btn btn-outline-light">Menu Member</a>
+                    <a href="<?= site_url('user/home/dashboard') ?>" class="btn btn-outline-light">Menu Member</a>
                     &nbsp; &nbsp; &nbsp;
                     <a href="<?= site_url('user/auth/logout') ?>" class="btn btn-outline-light">Logout</a>
                 <?php } else { ?>

@@ -44,10 +44,17 @@ class M_Crud extends CI_Model
         $this->db->delete($table);;
     }
 
-    public function join_table($table, $tbljoin, $q, $tbljoin2, $q2, $tbljoin3, $q3)
+    public function join_table($table, $tbljoin, $q, $tbljoin2, $q2, $tbljoin3, $q3, $select)
     {
-        $this->db->select('*,namaKurir,a.namaKota AS asal,b.namaKota AS tujuan,biaya');
+        $this->db->select($select);
         $this->db->join($tbljoin, $q)->join($tbljoin2, $q2,)->join($tbljoin3, $q3);
+        return $this->db->get($table);
+    }
+
+    public function join_table2($table, $tbljoin, $q, $tbljoin2, $q2, $select)
+    {
+        $this->db->select($select);
+        $this->db->join($tbljoin, $q)->join($tbljoin2, $q2,);
         return $this->db->get($table);
     }
 

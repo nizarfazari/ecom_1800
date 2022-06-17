@@ -15,8 +15,8 @@
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-pills flex-column">
-                            <li class="nav-item"><a href="" class="nav-link">Beranda</a></li>
-                            <li class="nav-item"><a href="" class="nav-link">Transaksi</a></li>
+                            <li class="nav-item"><a href="<?= site_url('user/home/') ?>" class="nav-link">Beranda</a></li>
+                            <li class="nav-item"><a href="<?= site_url('user/home/transaksi') ?>" class="nav-link">Transaksi</a></li>
                             <li class="nav-item"><a href="<?= site_url('user/home/toko') ?>" class="nav-link">Toko</a></li>
                             <li class="nav-item"><a href="" class="nav-link">Ubah Profil</a></li>
                             <li class="nav-item"><a href="" class="nav-link">Logout</a></li>

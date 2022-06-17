@@ -9,10 +9,6 @@ class Home extends CI_Controller
         $this->load->model('M_Crud');
         $this->load->model('M_Login');
         $this->load->library('form_validation');
-        $status = $this->session->userdata('status');
-        if (empty($status)) {
-            redirect('user/auth/login');
-        }
     }
 
     public function index()
@@ -23,7 +19,17 @@ class Home extends CI_Controller
 
     public function dashboard()
     {
+        $status = $this->session->userdata('status');
+        if (empty($status)) {
+            redirect('user/auth/login');
+        }
         $this->template->load('layout_member', 'member/dashboard');
+    }
+
+    public function transaksi()
+    {
+        $data['transaksi'] = $this->M_Crud->join_table2('tbl_detail_order do', 'tbl_order o', 'do.idOrder=o.idOrder', 'tbl_produk p', 'do.idProduk=p.idProduk', '*')->result();
+        $this->template->load('layout_member', 'member/toko/transaksi', $data);
     }
 
     public function keranjang()
@@ -33,6 +39,10 @@ class Home extends CI_Controller
     }
     public function tambah_keranjang($id)
     {
+        $status = $this->session->userdata('status');
+        if (empty($status)) {
+            redirect('user/auth/login');
+        }
         $find_id = ["idProduk" => $id];
         $jml_keranjang = count($this->cart->contents());
         if (empty($jml_keranjang)) {
@@ -104,9 +114,9 @@ class Home extends CI_Controller
             'statusOrder' => 'Belum Bayar'
         ];
 
-        $idTerakhir = $this->M_Crud->insert('tbl_order', $data_pembeli);
+        $this->M_Crud->insert('tbl_order', $data_pembeli);
 
-
+        $idTerakhir = $this->db->insert_id();
         if ($cart = $this->cart->contents()) {
             foreach ($cart as $item) {
                 $data_detail = [

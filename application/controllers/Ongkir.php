@@ -5,12 +5,16 @@ class ongkir extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_Crud');
+        if (empty($this->session->userdata('userName'))) {
+            redirect('adminpanel');
+        }
+        $this->template->load('layout_admin', 'admin/dashboard');
     }
 
     public function index()
     {
 
-        $data['ongkir'] = $this->M_Crud->join_table('tbl_biaya_kirim bk', 'tbl_kurir k', 'bk.idKurir=k.idKurir', 'tbl_kota a', 'bk.idKotaAsal = a.idKota', 'tbl_kota b', 'bk.idKotaTujuan = b.idKota')->result();
+        $data['ongkir'] = $this->M_Crud->join_table('tbl_biaya_kirim bk', 'tbl_kurir k', 'bk.idKurir=k.idKurir', 'tbl_kota a', 'bk.idKotaAsal = a.idKota', 'tbl_kota b', 'bk.idKotaTujuan = b.idKota', '*,namaKurir,a.namaKota AS asal,b.namaKota AS tujuan,biaya')->result();
         $this->template->load('layout_admin', 'admin/jasa_perjalanan/ongkir/index', $data);
     }
 

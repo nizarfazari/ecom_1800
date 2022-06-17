@@ -9,12 +9,16 @@
             parent::__construct();
             $this->load->model('M_Crud');
             $this->load->library('form_validation');
+            $status = $this->session->userdata('status');
+            if (empty($status)) {
+                redirect('user/auth/login');
+            }
         }
         public function index($id)
         {
             $find_id = ["idToko" => $id];
             $data['toko'] = $this->M_Crud->get_data_by_id('tbl_toko', $find_id)->row_object();
-            $data['produk'] = $this->M_Crud->get_all_data('tbl_produk')->result();
+            $data['produk'] = $this->M_Crud->get_data_by_id('tbl_produk', $find_id)->result();
             $this->template->load('layout_member', 'member/toko/produk/index', $data);
         }
 

@@ -5,6 +5,10 @@ class Kota extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_Crud');
+        if (empty($this->session->userdata('userName'))) {
+            redirect('adminpanel');
+        }
+        $this->template->load('layout_admin', 'admin/dashboard');
     }
 
     public function index()
